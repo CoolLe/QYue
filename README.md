@@ -1,9 +1,8 @@
 # QYue
 AndroidQYue
+## 启悦App文档
 
-##启悦App文档
-
-#实现功能:
+# 实现功能:
 登录、注册、忘记密码
 
 主界面（信息,通讯录,我的）
@@ -17,7 +16,7 @@ AndroidQYue
 通讯录:点击好友行,显示其个人信息.
 
 
-#命名规范:
+# 命名规范:
 * 登录活动:LoginActivity
 * 登录界面布局:activity_login
 
