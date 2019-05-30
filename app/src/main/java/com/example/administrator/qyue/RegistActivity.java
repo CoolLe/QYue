@@ -3,7 +3,7 @@ package com.example.administrator.qyue;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class RegistActivity extends AppCompatActivity {
+public class   RegistActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
