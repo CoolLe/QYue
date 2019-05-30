@@ -5,82 +5,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:label="修改密码"
+    android:background="@drawable/splash"
     tools:context=".ForgetActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="314dp"
         android:layout_height="47dp"
-        android:layout_marginTop="70dp"
-        android:gravity="center"
-        android:text="修改密码"
-        android:textColor="#000"
-        android:textSize="30sp" />
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/forgetId"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_gravity="center_horizontal"
-        android:drawablePadding="10dp"
-        android:paddingLeft="8dp"
-        android:gravity="center_vertical"
-        android:hint="请输入用户名"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#a3a3a3"
-        android:textSize="20sp"/>
-    <!--输入框-->
-    <EditText
-        android:id="@+id/resetPWD"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:drawablePadding="10dp"
-        android:paddingLeft="8dp"
-        android:gravity="center_vertical"
-        android:hint="请输入密码"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#a3a3a3"
-        android:textSize="20sp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/user" />
 
-    <EditText
-        android:id="@+id/rePWD"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:drawablePadding="10dp"
-        android:paddingLeft="8dp"
-        android:gravity="center_vertical"
-        android:hint="请再次输入密码"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#a3a3a3"
-        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="263dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="  请输入您的用户名"
+            android:inputType="textPassword"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userPaaword" />
+    </LinearLayout>
+    <View
+        android:layout_width="298dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="#bfbfbf" />
+
+    <LinearLayout
+        android:layout_width="315dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/password" />
+
+        <EditText
+            android:id="@+id/userPaaword"
+            android:layout_width="272dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="  请输入您的密码"
+            android:inputType="textPassword"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userID" />
+    </LinearLayout>
+    <View
+        android:layout_width="298dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="#bfbfbf" />
+
+    <LinearLayout
+        android:id="@id/rePaaword"
+        android:layout_width="315dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/repsasword" />
+
+        <EditText
+            android:id="@+id/rePaaword"
+            android:layout_width="271dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="  请确认您的密码"
+            android:inputType="textPassword"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userPaaword" />
+    </LinearLayout>
+    <View
+        android:layout_width="298dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="#bfbfbf" />
+
     <!--按钮-->
     <Button
         android:id="@+id/resetButtom"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_gravity="center_horizontal"
-        android:background="#87CEFF"
+        android:layout_width="302dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundcorner"
         android:text="确定"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"/>
+        android:textColor="#87CEFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </LinearLayout>
