@@ -108,4 +108,4 @@ public class MajorActivity extends AppCompatActivity implements View.OnClickList
 
         transaction.commit();
     }
-}}
+}
