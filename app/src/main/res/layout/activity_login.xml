@@ -77,7 +77,7 @@
     <!--按钮-->
     <Button
         android:id="@+id/loginButtom"
-        android:layout_width="302dp"
+        android:layout_width="318dp"
         android:layout_height="49dp"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="30dp"
@@ -87,35 +87,37 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
     <!--显示tv register , find_psw -->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <Button
+        <TextView
             android:id="@+id/registButtom"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:padding="8dp"
             android:text="立即注册"
-            android:textSize="18sp" />
+
+            android:textSize="14sp" />
         <!--layout_weight="1" layout_width="0dp"实现均分效果-->
-        <Button
+        <TextView
             android:id="@+id/forgetButtom"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:padding="8dp"
             android:text="找回密码?"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>
