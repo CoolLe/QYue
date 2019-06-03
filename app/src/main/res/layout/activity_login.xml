@@ -106,6 +106,7 @@
             android:gravity="center_horizontal"
             android:padding="8dp"
             android:text="立即注册"
+            android:background=""
             android:textSize="18sp" />
         <!--layout_weight="1" layout_width="0dp"实现均分效果-->
         <Button

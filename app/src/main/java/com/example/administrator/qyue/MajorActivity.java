@@ -19,7 +19,9 @@ public class MajorActivity extends AppCompatActivity implements View.OnClickList
 
     private FrameLayout ly_content;
 
-    private FirstFragment f1,f2,f3;
+    private MessageFragment f1;
+    private AddressFragment f2;
+    private MyFragment f3;
     private FragmentManager fragmentManager;
 
     @Override
@@ -75,7 +77,7 @@ public class MajorActivity extends AppCompatActivity implements View.OnClickList
                 selected();
                 tabMessage.setSelected(true);
                 if(f1==null){
-                    f1 = new FirstFragment("聊天框框");
+                    f1 = new MessageFragment("聊天框框");
                     transaction.add(R.id.fragment_container,f1);
                 }else{
                     transaction.show(f1);
@@ -87,7 +89,7 @@ public class MajorActivity extends AppCompatActivity implements View.OnClickList
                 selected();
                 tabAddress.setSelected(true);
                 if(f2==null){
-                    f2 = new FirstFragment("好友列表框框");
+                    f2 = new AddressFragment("好友列表框框");
                     transaction.add(R.id.fragment_container,f2);
                 }else{
                     transaction.show(f2);
@@ -98,7 +100,7 @@ public class MajorActivity extends AppCompatActivity implements View.OnClickList
                 selected();
                 tabUser.setSelected(true);
                 if(f3==null){
-                    f3 = new FirstFragment("我的信息框框");
+                    f3 = new MyFragment("我的信息框框");
                     transaction.add(R.id.fragment_container,f3);
                 }else{
                     transaction.show(f3);
