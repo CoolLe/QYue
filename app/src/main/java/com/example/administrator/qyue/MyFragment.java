@@ -11,20 +11,13 @@ import android.widget.TextView;
 
 @SuppressLint("ValidFragment")
 public class MyFragment extends Fragment {
-    private String context;
     private TextView mTextView;
-
-    public MyFragment(String context){
-        this.context = context;
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment,container,false);
         mTextView = (TextView)view.findViewById(R.id.txt_content);
-        //mTextView = (TextView)getActivity().findViewById(R.id.txt_content);
-        mTextView.setText(context);
         return view;
     }
 }

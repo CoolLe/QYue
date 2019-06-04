@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/messageButton"
+        android:title="消息"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="1"
+        />
+    <item
+        android:id="@+id/addressButton"
+        android:title="通讯录"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="2"
+        />
+    <item
+        android:id="@+id/myButton"
+        android:title="我的主页"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="3"
+        />
+</menu>
