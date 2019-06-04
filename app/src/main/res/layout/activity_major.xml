@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!--
-    标题栏框
-    -->
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/tab_title"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#d3d3d3">
-
         <TextView
             android:id="@+id/txt_top"
             android:layout_width="match_parent"
@@ -21,72 +18,28 @@
             android:text="启悦"
             android:textColor="#000000"
             android:textSize="18sp" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:layout_alignParentBottom="true"
             android:background="#FFFFFF" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/tab_menu"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/txt_message"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tab_menu_bg"
-            android:drawableTop="@drawable/tab_menu_message"
-            android:drawablePadding="3dp"
-            android:gravity="center"
-            android:text="消息"
-            android:textColor="@drawable/tab_menu_message_text" />
-
-        <TextView
-            android:id="@+id/txt_address"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tab_menu_bg"
-            android:drawableTop="@drawable/tab_menu_address"
-            android:drawablePadding="3dp"
-            android:gravity="center"
-            android:text="通讯录"
-            android:textColor="@drawable/tab_menu_address_text" />
-
-        <TextView
-            android:id="@+id/txt_my"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tab_menu_bg"
-            android:drawableTop="@drawable/tab_menu_my"
-            android:drawablePadding="3dp"
-            android:gravity="center"
-            android:text="我的"
-            android:textColor="@drawable/tab_menu_my_text" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/div_tab_bar"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_above="@id/tab_menu"
-        android:background="#d3d3d3" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/tab_menu"
-        android:layout_below="@id/tab_title"
-        android:background="#FFFFFF"></FrameLayout>
-
-</RelativeLayout>
+</LinearLayout>

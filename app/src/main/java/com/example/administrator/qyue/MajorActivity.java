@@ -2,112 +2,68 @@ package com.example.administrator.qyue;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MajorActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView topBar;
-    private TextView tabMessage;
-    private TextView tabAddress;
+public class MajorActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
-    private TextView tabUser;
-
-    private FrameLayout ly_content;
-
-    private MessageFragment f1;
-    private AddressFragment f2;
-    private MyFragment f3;
-    private FragmentManager fragmentManager;
+    ViewPager viewPager;
+    BottomNavigationView bottomNavigation;
+    List<Fragment> fragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_major);
-
-        bindView();
-
+        initView();
     }
 
-    //UI组件初始化与事件绑定
-    private void bindView() {
-        topBar = (TextView)this.findViewById(R.id.txt_top);
-        tabMessage = (TextView)this.findViewById(R.id.txt_message);
-        tabAddress = (TextView)this.findViewById(R.id.txt_address);
-        tabUser = (TextView)this.findViewById(R.id.txt_my);
-        ly_content = (FrameLayout) findViewById(R.id.fragment_container);
+    private void initView() {
+        viewPager=findViewById(R.id.view_pager_bottom_navigation);
+        bottomNavigation=findViewById(R.id.bottom_navigation);
 
-        tabMessage.setOnClickListener(this);
-        tabUser.setOnClickListener(this);
-        tabAddress.setOnClickListener(this);
+        fragments = new ArrayList<>();
+        fragments.add(new AddressFragment());
+        fragments.add(new MyFragment());
+        fragments.add(new MessageFragment());
 
-    }
+        viewPager.addOnPageChangeListener(this);
 
-    //重置所有文本的选中状态
-    public void selected(){
-        tabMessage.setSelected(false);
-        tabAddress.setSelected(false);
-        tabUser.setSelected(false);
-    }
+        bottomNavigation.setOnNavigationItemSelectedListener(item -> {
+            viewPager.setCurrentItem(item.getOrder());
+            return true;
+        });
 
-    //隐藏所有Fragment
-    public void hideAllFragment(FragmentTransaction transaction){
-        if(f1!=null){
-            transaction.hide(f1);
-        }
-        if(f2!=null){
-            transaction.hide(f2);
-        }
-        if(f3!=null){
-            transaction.hide(f3);
-        }
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                return fragments.get(i);
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.size();
+            }
+        });
     }
 
     @Override
-    public void onClick(View v) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        hideAllFragment(transaction);
-        switch(v.getId()){
-            case R.id.txt_message:
-                selected();
-                tabMessage.setSelected(true);
-                if(f1==null){
-                    f1 = new MessageFragment("聊天框框");
-                    transaction.add(R.id.fragment_container,f1);
-                }else{
-                    transaction.show(f1);
-                }
-                break;
+    public void onPageScrolled(int i, float v, int i1) {
 
+    }
 
-            case R.id.txt_address:
-                selected();
-                tabAddress.setSelected(true);
-                if(f2==null){
-                    f2 = new AddressFragment("好友列表框框");
-                    transaction.add(R.id.fragment_container,f2);
-                }else{
-                    transaction.show(f2);
-                }
-                break;
+    @Override
+    public void onPageSelected(int i) {
+        bottomNavigation.getMenu().getItem(i).setChecked(true);
+    }
 
-            case R.id.txt_my:
-                selected();
-                tabUser.setSelected(true);
-                if(f3==null){
-                    f3 = new MyFragment("我的信息框框");
-                    transaction.add(R.id.fragment_container,f3);
-                }else{
-                    transaction.show(f3);
-                }
-                break;
-        }
+    @Override
+    public void onPageScrollStateChanged(int i) {
 
-        transaction.commit();
     }
 }
