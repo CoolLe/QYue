@@ -17,7 +17,7 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment,container,false);
-        mTextView = (TextView)view.findViewById(R.id.txt_content);
+        mTextView = (TextView)view.findViewById(R.id.my_top);
         return view;
     }
 }

@@ -19,6 +19,7 @@ public class MajorActivity extends AppCompatActivity implements ViewPager.OnPage
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_major);
         initView();
     }
@@ -28,9 +29,9 @@ public class MajorActivity extends AppCompatActivity implements ViewPager.OnPage
         bottomNavigation=findViewById(R.id.bottom_navigation);
 
         fragments = new ArrayList<>();
+        fragments.add(new MessageFragment());
         fragments.add(new AddressFragment());
         fragments.add(new MyFragment());
-        fragments.add(new MessageFragment());
 
         viewPager.addOnPageChangeListener(this);
 

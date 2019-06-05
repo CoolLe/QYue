@@ -3,19 +3,19 @@
     <item
         android:id="@+id/messageButton"
         android:title="消息"
-        android:icon="@mipmap/ic_launcher"
-        android:orderInCategory="1"
+        android:icon="@drawable/tab_menu_message"
+        android:orderInCategory="0"
         />
     <item
         android:id="@+id/addressButton"
         android:title="通讯录"
-        android:icon="@mipmap/ic_launcher"
-        android:orderInCategory="2"
+        android:icon="@drawable/tab_menu_address"
+        android:orderInCategory="1"
         />
     <item
         android:id="@+id/myButton"
         android:title="我的主页"
-        android:icon="@mipmap/ic_launcher"
-        android:orderInCategory="3"
+        android:icon="@drawable/tab_menu_my"
+        android:orderInCategory="2"
         />
 </menu>

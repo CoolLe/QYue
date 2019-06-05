@@ -4,14 +4,23 @@
     android:layout_height="match_parent"
     android:background="#d3d3d3">
 
-
+    <RelativeLayout
+        android:id="@+id/address_content"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#1C86EE">
     <TextView
-        android:id="@+id/txt_content"
+        android:id="@+id/address_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="嘿嘿"
-        android:textColor="#813D"
-        android:textSize="20sp"/>
-
+        android:text="好友列表"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF" />
+    </RelativeLayout>
 </LinearLayout>
