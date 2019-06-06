@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:label="修改密码"
-    android:background="@drawable/splash"
+    android:background="@drawable/timg1"
     tools:context=".ForgetActivity">
 
     <LinearLayout
