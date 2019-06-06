@@ -7,7 +7,7 @@
         android:id="@+id/message_content"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#1C86EE">
+        android:background="#2776ce">
     <TextView
         android:id="@+id/message_top"
         android:layout_width="match_parent"
