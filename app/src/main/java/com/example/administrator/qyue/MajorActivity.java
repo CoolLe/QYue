@@ -1,70 +1,86 @@
 package com.example.administrator.qyue;
 
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.widget.RadioGroup;
 
-public class MajorActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class MajorActivity extends FragmentActivity implements AddressFragment.OnFragmentInteractionListener {
 
-    ViewPager viewPager;
-    BottomNavigationView bottomNavigation;
-    List<Fragment> fragments;
+    private RadioGroup rg_major;
+    private MessageFragment messageFragment;
+    private AddressFragment addressFragment;
+    private MyFragment myFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_major);
+
+
         initView();
+        initData();
+        initLister();
+
+    }
+
+    private void initLister() {
+        //RadioGroup的选择事件
+        rg_major.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Fragment fragment=null;
+                switch (checkedId){
+                    //消息列表页面
+                    case R.id.messageButton:
+                        fragment=messageFragment;
+                    break;
+
+                    //通讯录列表界面
+                    case R.id.addressButton:
+                        fragment=addressFragment;
+                        break;
+
+                    //我的界面
+                    case R.id.myButton:
+                        fragment=myFragment;
+                        break;
+                }
+                //实现fragment切换的方法
+                switchFragment(fragment);
+            }
+        });
+      //默认选择消息列表页面
+        rg_major.check(R.id.messageButton);
+    }
+    //实现fragment切换的方法
+    private void switchFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fl_main,fragment).commit();
+
     }
 
     private void initView() {
-        viewPager=findViewById(R.id.view_pager_bottom_navigation);
-        bottomNavigation=findViewById(R.id.bottom_navigation);
-
-        fragments = new ArrayList<>();
-        fragments.add(new MessageFragment());
-        fragments.add(new AddressFragment());
-        fragments.add(new MyFragment());
-
-        viewPager.addOnPageChangeListener(this);
-
-        bottomNavigation.setOnNavigationItemSelectedListener(item -> {
-            viewPager.setCurrentItem(item.getOrder());
-            return true;
-        });
-
-        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                return fragments.get(i);
-            }
-
-            @Override
-            public int getCount() {
-                return fragments.size();
-            }
-        });
-    }
-
-    @Override
-    public void onPageScrolled(int i, float v, int i1) {
+        rg_major=(RadioGroup) findViewById(R.id.rg_major);
 
     }
 
-    @Override
-    public void onPageSelected(int i) {
-        bottomNavigation.getMenu().getItem(i).setChecked(true);
+    private void initData() {
+        //创建三个fragment对象
+        messageFragment = new MessageFragment();
+        addressFragment = new AddressFragment();
+        myFragment = new MyFragment();
     }
 
+
     @Override
-    public void onPageScrollStateChanged(int i) {
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
+

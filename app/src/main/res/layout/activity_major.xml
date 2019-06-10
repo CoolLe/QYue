@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/tab_title"
         android:layout_width="match_parent"
@@ -24,22 +25,55 @@
             android:layout_alignParentBottom="true"
             android:background="#FFFFFF" />
     </RelativeLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation" />
+        android:layout_weight="1"
+        android:layout_height="0dp">
+    </FrameLayout>
 
+    <RadioGroup
+        android:id="@+id/rg_major"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <RadioButton
+            android:id="@+id/messageButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="消息"
+            android:textSize="20sp"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/major_bottom_bg_selector"
+            android:textColor="@color/major_bottom_textcolor_selector"/>
+        <RadioButton
+            android:id="@+id/addressButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="通讯录"
+            android:textSize="20sp"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/major_bottom_bg_selector"
+            android:textColor="@color/major_bottom_textcolor_selector"/>
+
+        <RadioButton
+            android:id="@+id/myButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="我的"
+            android:textSize="20sp"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/major_bottom_bg_selector"
+            android:textColor="@color/major_bottom_textcolor_selector"/>
+
+
+    </RadioGroup>
 </LinearLayout>
