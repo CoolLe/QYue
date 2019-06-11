@@ -1,137 +1,93 @@
 package com.example.administrator.qyue;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.view.Gravity;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import com.example.administrator.qyue.Web.WebService;
+import java.io.IOException;
+import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
-public class LoginActivity extends Activity implements OnClickListener{
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
-
-    //loginButton
-    private  Button logbtn;
-    //test register
-    private  TextView regtv,infotv;
-    //userInformation
-    EditText username,password;
-    //waiting dialog
-    private ProgressDialog dialog;
-    // 返回的数据
-    private String info;
-    //return thread
-    private static Handler handler=new Handler();
+public class LoginActivity extends AppCompatActivity {
+    @BindView(R.id.phoneNum)
+    EditText phoneNum;
+    @BindView(R.id.password)
+    EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
-        //获取控件
-        username = (EditText) findViewById(R.id.userTest);
-        password = (EditText) findViewById(R.id.pwdTest);
-        logbtn = (Button) findViewById(R.id.loginButtom);
-        regtv = (TextView) findViewById(R.id.registButtom);
-        infotv = (TextView) findViewById(R.id.info);
-
-        //set listener
-        logbtn.setOnClickListener(this);
-
-
-        //init();
 
     }
+
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private boolean checkPassword(String phoneNum, String password) {
+
+        return Objects.equals(phoneNum, this.phoneNum.getText().toString())
+                && Objects.equals(password, this.password.getText().toString());
+    }
+
+    private boolean checkUserData() {
+
+        if ("".equals(phoneNum.getText().toString())) {
+            ToastUtils.toastShowe(this, "用户名不能为空");
+            return false;
+        }
+
+        if ("".equals(password.getText().toString())) {
+            ToastUtils.toastShowe(this, "密码不能为空");
+            return false;
+        }
+
+        return true;
+    }
+
+    @OnClick({R.id.loginButtom, R.id.registButtom, R.id.forgetButtom})
+    public void onViewClicked(View view) {
+        Log.d("TAG", view.getId() + "");
+        switch (view.getId()) {
             case R.id.loginButtom:
-                // 检测网络，无法检测wifi
-                if (!checkNetwork()) {
-                    Toast toast = Toast.makeText(LoginActivity.this,"网络未连接", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                    break;
-                }
-                // 提示框
-                dialog = new ProgressDialog(this);
-                dialog.setTitle("提示");
-                dialog.setMessage("正在登陆，请稍后...");
-                dialog.setCancelable(false);
-                dialog.show();
-                // 创建子线程，分别进行Get和Post传输
-                new Thread(new MyThread()).start();
+                startActivity(new Intent(this, MajorActivity.class));
                 break;
             case R.id.registButtom:
-                Intent regItn = new Intent(LoginActivity.this, RegistActivity.class);
-                // overridePendingTransition(anim_enter);
-                startActivity(regItn);
+                startActivity(new Intent(this, RegistActivity.class));
                 break;
+            case R.id.forgetButtom:
+                startActivity(new Intent(this, ForgetActivity.class));
+                break;
+            default:
+                Log.d("TAG", "default");
         }
-        ;
-    }
-    // 子线程接收数据，主线程修改数据
-    public class MyThread implements Runnable {
-        @Override
-        public void run() {
-            info = WebService.executeHttpGet(username.getText().toString(), password.getText().toString());
-            // info = WebServicePost.executeHttpPost(username.getText().toString(), password.getText().toString());
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    infotv.setText(info);
-                    dialog.dismiss();
-                }
-            });
-        }
-    }
-    // 检测网络
-    private boolean checkNetwork() {
-        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connManager.getActiveNetworkInfo() != null) {
-            return connManager.getActiveNetworkInfo().isAvailable();
-        }
-        return false;
-    }
-
-
-    private void init() {
-        TextView tv_register = (TextView) findViewById(R.id.registButtom);
-        TextView tv_find_psw = (TextView) findViewById(R.id.forgetButtom);
-        Button btn_login = (Button) findViewById(R.id.loginButtom);
-        username = (EditText) findViewById(R.id.userTest);
-        password = (EditText) findViewById(R.id.pwdTest);
-        //立即注册控件的点击事件
-        tv_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //为了跳转到注册界面，并实现注册功能
-                Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-        //找回密码控件的点击事件
-        tv_find_psw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, ForgetActivity.class));
-            }
-        });
-
     }
 }

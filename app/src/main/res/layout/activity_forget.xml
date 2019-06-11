@@ -22,17 +22,18 @@
             android:src="@drawable/user" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/phoneNum"
             android:layout_width="263dp"
             android:layout_height="match_parent"
             android:background="@null"
-            android:hint="  请输入您的用户名"
-            android:inputType="textPassword"
+            android:hint="  请输入您的手机号"
+            android:inputType="text"
+            android:textColor="@android:color/white"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userPaaword" />
+            app:layout_constraintTop_toBottomOf="@+id/userPassword" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
@@ -54,17 +55,18 @@
             android:src="@drawable/password" />
 
         <EditText
-            android:id="@+id/userPaaword"
+            android:id="@+id/userPassword"
             android:layout_width="272dp"
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="  请输入您的密码"
             android:inputType="textPassword"
             android:textColorHint="#FFFFFF"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userID" />
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
@@ -74,7 +76,7 @@
         android:background="#bfbfbf" />
 
     <LinearLayout
-        android:id="@id/rePaaword"
+        android:id="@id/rePassword"
         android:layout_width="315dp"
         android:layout_height="45dp"
         android:layout_marginLeft="40dp"
@@ -87,17 +89,18 @@
             android:src="@drawable/repsasword" />
 
         <EditText
-            android:id="@+id/rePaaword"
+            android:id="@+id/rePassword"
             android:layout_width="271dp"
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="  请确认您的密码"
             android:inputType="textPassword"
             android:textColorHint="#FFFFFF"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userPaaword" />
+            app:layout_constraintTop_toBottomOf="@+id/userPassword" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
