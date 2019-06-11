@@ -125,7 +125,7 @@ public class AddressFragment extends Fragment {
         contactList =  getActivity().findViewById(R.id.contact_list);
         letterView = getActivity().findViewById(R.id.letter_view);
 
-        address_invite=getActivity().findViewById(R.id.address_invite);
+        //address_invite=getActivity().findViewById(R.id.address_invite);
 
         layoutManager = new LinearLayoutManager(getActivity());
         adapter = new ContactAdapter(getActivity(),contactNames);

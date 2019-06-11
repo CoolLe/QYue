@@ -51,5 +51,5 @@ public class BaseActivity  extends AppCompatActivity {
         super.onPause();
         NIMClient.getService(MsgService.class).setChattingAccount(MsgService.MSG_CHATTING_ACCOUNT_NONE, SessionTypeEnum.None);
     }
-    */
+*/
 }

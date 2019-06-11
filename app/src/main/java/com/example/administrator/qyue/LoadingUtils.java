@@ -7,7 +7,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-class LoadingUtils {
+//import com.github.ybq.android.spinkit.style.Circle;
+public class LoadingUtils {
     private Activity activity;
     private ProgressBar mPbLoading;
     private RelativeLayout mRlLoading;
@@ -16,12 +17,12 @@ class LoadingUtils {
 
     public LoadingUtils(Activity activity,String mLoadingText) {
         this.activity = activity;
-        this.mPbLoading = activity.findViewById(R.id.pb_loading);
-        this.mRlLoading = activity.findViewById(R.id.rl_loading);
-        this.mTvLoadingText = activity.findViewById(R.id.tv_loading_text);
+       // this.mPbLoading = activity.findViewById(R.id.pb_loading);
+        //this.mRlLoading = activity.findViewById(R.id.rl_loading);
+        //this.mTvLoadingText = activity.findViewById(R.id.tv_loading_text);
         this.mLoadingText = mLoadingText;
     }
-/*
+/*-
     public void creat(){
         Circle circle = new Circle();
         mPbLoading.setIndeterminateDrawable(circle);

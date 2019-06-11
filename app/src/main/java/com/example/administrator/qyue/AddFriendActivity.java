@@ -6,6 +6,8 @@ import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ public class AddFriendActivity extends BaseActivity implements View.OnClickListe
     private LoadingUtils loadingUtils;
 
     final ArrayList<Map<String, Object>> listdata = new ArrayList<>();
-    //private Gson gson;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
