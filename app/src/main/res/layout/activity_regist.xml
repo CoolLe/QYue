@@ -22,7 +22,7 @@
             android:src="@drawable/user" />
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/phoneNum"
             android:layout_width="270dp"
             android:layout_height="match_parent"
             android:background="@null"
@@ -56,7 +56,7 @@
             android:src="@drawable/username" />
 
         <EditText
-            android:id="@+id/phoneNum"
+            android:id="@+id/username"
             android:layout_width="263dp"
             android:layout_height="match_parent"
             android:background="@null"

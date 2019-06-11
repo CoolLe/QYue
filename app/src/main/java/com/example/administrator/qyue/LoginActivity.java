@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         //开始请求，填入url和表单
         Request request = new Request.Builder()
-                .url("https://47.101.176.1:8090/user/login")
+                .url("http://47.101.176.1:8090/user/login")
                 .post(post)
                 .build();
         //Toast.makeText(this, "已经填入表单和url", Toast.LENGTH_SHORT).show();
