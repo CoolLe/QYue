@@ -1,4 +1,4 @@
-package com.example.administrator.qyue;
+package com.example.administrator.qyue.Message;
 
 public class Msg {
     public static final  int TYPE_RECEIVED=0;

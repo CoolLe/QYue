@@ -1,4 +1,4 @@
-package com.example.administrator.qyue;
+package com.example.administrator.qyue.Utils;
 
 import android.app.Activity;
 import android.view.View;
@@ -43,7 +43,7 @@ public class LoadingUtils {
     public void dismissOnUiThread() {
 
 
-        com.example.administrator.qyue.addfrient.ThreadUtils.runInUIThread(new Runnable() {
+        com.example.administrator.qyue.AddFriend.ThreadUtils.runInUIThread(new Runnable() {
             @Override
             public void run() {
                 mRlLoading.setVisibility(View.GONE);

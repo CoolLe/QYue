@@ -10,6 +10,10 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.RadioGroup;
 
+import com.example.administrator.qyue.Fragment.AddressFragment;
+import com.example.administrator.qyue.Fragment.MessageFragment;
+import com.example.administrator.qyue.Fragment.MyFragment;
+
 public class MajorActivity extends FragmentActivity implements AddressFragment.OnFragmentInteractionListener {
 
     private RadioGroup rg_major;

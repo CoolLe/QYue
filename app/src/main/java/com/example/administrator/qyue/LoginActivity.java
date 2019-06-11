@@ -1,10 +1,7 @@
 package com.example.administrator.qyue;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.administrator.qyue.Utils.ToastUtils;
 
 import java.io.IOException;
 import java.util.Objects;

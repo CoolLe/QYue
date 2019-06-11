@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.administrator.qyue.addfrient.ACache;
+import com.example.administrator.qyue.AddFriend.ACache;
 
 import java.io.File;
 import java.util.ArrayList;

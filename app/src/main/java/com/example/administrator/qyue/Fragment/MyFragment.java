@@ -1,4 +1,4 @@
-package com.example.administrator.qyue;
+package com.example.administrator.qyue.Fragment;
 
 import android.annotation.SuppressLint;
 import android.graphics.ColorSpace;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.administrator.qyue.R;
 
 @SuppressLint("ValidFragment")
 public class MyFragment extends Fragment {

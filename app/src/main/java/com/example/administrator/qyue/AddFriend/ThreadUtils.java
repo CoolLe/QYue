@@ -1,4 +1,4 @@
-package com.example.administrator.qyue.addfrient;
+package com.example.administrator.qyue.AddFriend;
 
 import android.os.Handler;
 

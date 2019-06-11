@@ -1,7 +1,5 @@
 package com.example.administrator.qyue;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,13 +7,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.administrator.qyue.Utils.ToastUtils;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class   RegistActivity extends AppCompatActivity {
-    @BindView(R.id.phone)
-    EditText phone;
+public class RegistActivity extends AppCompatActivity {
+    @BindView(R.id.username)
+    EditText username;
     @BindView(R.id.phoneNum)
     EditText phoneNum;
     @BindView(R.id.password)
@@ -66,12 +66,12 @@ public class   RegistActivity extends AppCompatActivity {
 
     private boolean checkUserData() {
         // todo 账号是否重复应该连网检查
-        if ("".equals(phone.getText().toString())) {
-            ToastUtils.toastShowe(this, "学号不能为空");
+        if ("".equals(phoneNum.getText().toString())) {
+            ToastUtils.toastShowe(this, "手机号不能为空");
             return false;
         }
 
-        if (!checkphoneNum()) {
+        if (!checkusername()) {
             return false;
         }
 
@@ -83,12 +83,13 @@ public class   RegistActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean checkphoneNum() {
-        if ("".equals(phoneNum.getText().toString())) {
-            ToastUtils.toastShowe(this, "手机号不能为空");
+    private boolean checkusername() {
+        if ("".equals(username.getText().toString())) {
+            ToastUtils.toastShowe(this, "用户名不能为空");
             return false;
         }
         return true;
     }
 
 }
+

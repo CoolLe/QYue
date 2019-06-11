@@ -1,4 +1,4 @@
-package com.example.administrator.qyue;
+package com.example.administrator.qyue.Address;
 
 //最右边字母栏的实现
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.administrator.qyue.R;
 
 public class LetterView extends LinearLayout {
 

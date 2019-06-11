@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.administrator.qyue.addfrient;
+package com.example.administrator.qyue.AddFriend;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package com.example.administrator.qyue;
+package com.example.administrator.qyue.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.administrator.qyue.Address.ContactAdapter;
+import com.example.administrator.qyue.Address.DividerItemDecoration;
+import com.example.administrator.qyue.Address.LetterView;
+import com.example.administrator.qyue.R;
 
 /**
  * A simple {@link Fragment} subclass.

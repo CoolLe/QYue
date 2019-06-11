@@ -15,7 +15,7 @@
         android:networkSecurityConfig="@xml/network_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".Message.MessageActivity"></activity>
         <activity android:name=".ForgetActivity" />
         <activity android:name=".RegistActivity" />
         <activity android:name=".MajorActivity" />

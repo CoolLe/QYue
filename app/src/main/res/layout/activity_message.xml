@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8f8ff"
-    tools:context=".MessageActivity"
+    tools:context=".Message.MessageActivity"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/txt_friend"
