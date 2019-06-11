@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,15 +21,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AddressFragment extends Fragment {
+
     private RecyclerView contactList;
-
     private String[] contactNames;
-
     private LinearLayoutManager layoutManager;
-
     private LetterView letterView;
-
     private ContactAdapter adapter;
+    private TextView address_invite;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -70,6 +69,7 @@ public class AddressFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -122,47 +122,32 @@ public class AddressFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         contactNames = new String[] {"谈一乐", "温莎莎", "黄启洋", "老师", "大大"};
-
         contactList =  getActivity().findViewById(R.id.contact_list);
-
         letterView = getActivity().findViewById(R.id.letter_view);
 
-        layoutManager = new LinearLayoutManager(getActivity());
+        address_invite=getActivity().findViewById(R.id.address_invite);
 
+        layoutManager = new LinearLayoutManager(getActivity());
         adapter = new ContactAdapter(getActivity(),contactNames);
 
-
-
         contactList.setLayoutManager(layoutManager);
-
         contactList.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-
         contactList.setAdapter(adapter);
 
 
-
+        //实现字母排序好友列表
         letterView.setCharacterListener(new LetterView.CharacterClickListener() {
 
             @Override
-
             public void clickCharacter(String character) {
-
                 layoutManager.scrollToPositionWithOffset(adapter.getScrollPosition(character), 0);
-
             }
-
-
 
             @Override
-
             public void clickArrow() {
-
                 layoutManager.scrollToPositionWithOffset(0, 0);
-
             }
-
         });
-
     }
     }
 

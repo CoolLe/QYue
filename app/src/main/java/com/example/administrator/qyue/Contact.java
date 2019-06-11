@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class Contact implements Serializable {
 
     private String mName;
-
     private int mType;
 
 
@@ -15,7 +14,6 @@ public class Contact implements Serializable {
     public Contact(String name, int type) {
 
         mName = name;
-
         mType = type;
 
     }

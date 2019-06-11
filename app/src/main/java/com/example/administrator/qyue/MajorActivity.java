@@ -1,11 +1,13 @@
 package com.example.administrator.qyue;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
 import android.widget.RadioGroup;
 
 public class MajorActivity extends FragmentActivity implements AddressFragment.OnFragmentInteractionListener {
@@ -82,5 +84,15 @@ public class MajorActivity extends FragmentActivity implements AddressFragment.O
     public void onFragmentInteraction(Uri uri) {
 
     }
-}
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_add:
+                startActivity(new Intent(MajorActivity.this, AddFriendActivity.class));
+                break;
+            default:
+                break;
+        }
+
+    }}
 

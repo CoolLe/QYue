@@ -23,4 +23,14 @@
         android:background="#FFFFFF" />
     </RelativeLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contact_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.example.administrator.qyue.LetterView
+        android:id="@+id/letter_view"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
 </LinearLayout>

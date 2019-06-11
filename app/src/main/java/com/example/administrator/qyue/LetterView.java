@@ -24,7 +24,7 @@ public class LetterView extends LinearLayout {
 
     private void initView() {
         addView(buildImageLayout());
-
+//实现字母排序
         for (char i = 'A'; i <= 'Z'; i++) {
             final String character = i + "";
             TextView tv = buildTextLayout(character);
@@ -72,6 +72,7 @@ public class LetterView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
+                    //
                     mListener.clickArrow();
 
                 }
@@ -89,9 +90,11 @@ public class LetterView extends LinearLayout {
         mListener = listener;
     }
 
+    //字母、箭头或#被点击时回调事件实现
     public interface CharacterClickListener {
         void clickCharacter(String character);
 
+//点击箭头实现回调事件
         void clickArrow();
 
     }
