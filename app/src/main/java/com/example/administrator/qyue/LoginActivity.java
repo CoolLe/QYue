@@ -1,82 +1,93 @@
 package com.example.administrator.qyue;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
-public class LoginActivity extends Activity {
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
-    private String userName, psw;
-    private EditText userTest, pwdTest;
-    private Button login;
+import java.io.IOException;
+import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
+public class LoginActivity extends AppCompatActivity {
+    @BindView(R.id.phoneNum)
+    EditText phoneNum;
+    @BindView(R.id.password)
+    EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login=findViewById(R.id.loginButtom);
+        ButterKnife.bind(this);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,MajorActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
-
-        init();
 
     }
-        /*forget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,ForgetActivity.class);
-                startActivity(intent);
-            }
-        });
-        regist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,RegistActivity.class);
-                startActivity(intent);
-            }
-        });*/
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private boolean checkPassword(String phoneNum, String password) {
 
-    private void init() {
-        TextView tv_register = (TextView) findViewById(R.id.registButtom);
-        TextView tv_find_psw = (TextView) findViewById(R.id.forgetButtom);
-        Button btn_login = (Button) findViewById(R.id.loginButtom);
-        userTest = (EditText) findViewById(R.id.userTest);
-        pwdTest = (EditText) findViewById(R.id.pwdTest);
-        //立即注册控件的点击事件
-        tv_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //为了跳转到注册界面，并实现注册功能
-                Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-        //找回密码控件的点击事件
-        tv_find_psw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, ForgetActivity.class));
-            }
-        });
+        return Objects.equals(phoneNum, this.phoneNum.getText().toString())
+                && Objects.equals(password, this.password.getText().toString());
+    }
 
+    private boolean checkUserData() {
+
+        if ("".equals(phoneNum.getText().toString())) {
+            ToastUtils.toastShowe(this, "用户名不能为空");
+            return false;
+        }
+
+        if ("".equals(password.getText().toString())) {
+            ToastUtils.toastShowe(this, "密码不能为空");
+            return false;
+        }
+
+        return true;
+    }
+
+    @OnClick({R.id.loginButtom, R.id.registButtom, R.id.forgetButtom})
+    public void onViewClicked(View view) {
+        Log.d("TAG", view.getId() + "");
+        switch (view.getId()) {
+            case R.id.loginButtom:
+                startActivity(new Intent(this, MajorActivity.class));
+                break;
+            case R.id.registButtom:
+                startActivity(new Intent(this, RegistActivity.class));
+                break;
+            case R.id.forgetButtom:
+                startActivity(new Intent(this, ForgetActivity.class));
+                break;
+            default:
+                Log.d("TAG", "default");
+        }
     }
 }
