@@ -99,6 +99,8 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
+        <!--layout_weight="1" layout_width="0dp"实现均分效果-->
+
         <TextView
             android:id="@+id/registButtom"
             android:layout_width="0dp"
@@ -108,7 +110,6 @@
             android:padding="8dp"
             android:text="立即注册"
             android:textSize="18sp" />
-        <!--layout_weight="1" layout_width="0dp"实现均分效果-->
 
         <TextView
             android:id="@+id/forgetButtom"
@@ -121,10 +122,4 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26dp"
-        android:text="服务器返回消息" />
 </LinearLayout>

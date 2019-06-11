@@ -26,6 +26,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.phoneNum)
@@ -33,12 +34,49 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.password)
     EditText password;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+    }
 
+    public void login(){
+
+        //初始化okhttp客户端
+        OkHttpClient client = new OkHttpClient.Builder().build();
+        //创建POST表单，获取username和password
+        RequestBody post = new FormBody.Builder()
+                .add("phoneNum",phoneNum.getText().toString())
+                .add("password",password.getText().toString())
+                .build();
+        //开始请求，填入url和表单
+        Request request = new Request.Builder()
+                .url("https://47.101.176.1:8090/user/login")
+                .post(post)
+                .build();
+        //Toast.makeText(this, "已经填入表单和url", Toast.LENGTH_SHORT).show();
+        Call call = client.newCall(request);
+        //客户端回调
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                //请求失败的处理
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException{
+                final String responseData = response.body().string();
+                if(responseData.equals(null)){
+                    Toast.makeText(LoginActivity.this, "用户名密码不一致", Toast.LENGTH_SHORT).show();
+                }else {
+                    startActivity(new Intent(LoginActivity.this,MajorActivity.class));
+                    finish();
+                }
+            }
+        });
 
     }
 
@@ -78,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("TAG", view.getId() + "");
         switch (view.getId()) {
             case R.id.loginButtom:
-                startActivity(new Intent(this, MajorActivity.class));
+                login();
                 break;
             case R.id.registButtom:
                 startActivity(new Intent(this, RegistActivity.class));

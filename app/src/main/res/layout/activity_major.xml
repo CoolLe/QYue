@@ -55,34 +55,35 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="消息"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:button="@null"
             android:gravity="center"
-            android:background="@drawable/major_bottom_bg_selector"
-            android:textColor="@color/major_bottom_textcolor_selector"/>
+            android:drawableTop="@drawable/tab_menu_message"
+            />
+
         <RadioButton
             android:id="@+id/addressButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="通讯录"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:button="@null"
             android:gravity="center"
-            android:background="@drawable/major_bottom_bg_selector"
-            android:textColor="@color/major_bottom_textcolor_selector"/>
+            android:drawableTop="@drawable/tab_menu_address"
+            />
 
         <RadioButton
             android:id="@+id/myButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="我的"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:button="@null"
             android:gravity="center"
-            android:background="@drawable/major_bottom_bg_selector"
-            android:textColor="@color/major_bottom_textcolor_selector"/>
+            android:drawableTop="@drawable/tab_menu_my"
+            android:text="我的"
+            />
 
 
     </RadioGroup>
