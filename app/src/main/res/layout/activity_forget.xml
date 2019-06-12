@@ -22,7 +22,7 @@
             android:src="@drawable/user" />
 
         <EditText
-            android:id="@+id/phoneNum"
+            android:id="@+id/phonenumber"
             android:layout_width="263dp"
             android:layout_height="match_parent"
             android:background="@null"
@@ -33,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/user_password" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
@@ -55,7 +55,7 @@
             android:src="@drawable/password" />
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/user_password"
             android:layout_width="272dp"
             android:layout_height="match_parent"
             android:background="@null"
@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone" />
+            app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
@@ -76,7 +76,7 @@
         android:background="#bfbfbf" />
 
     <LinearLayout
-        android:id="@id/rePassword"
+        android:id="@id/user_repassword"
         android:layout_width="315dp"
         android:layout_height="45dp"
         android:layout_marginLeft="40dp"
@@ -89,7 +89,7 @@
             android:src="@drawable/repsasword" />
 
         <EditText
-            android:id="@+id/rePassword"
+            android:id="@+id/re_password"
             android:layout_width="271dp"
             android:layout_height="match_parent"
             android:background="@null"
@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/user_password" />
     </LinearLayout>
     <View
         android:layout_width="298dp"
@@ -117,12 +117,13 @@
         android:layout_marginLeft="38dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/roundcorner"
+
         android:text="确定"
         android:textColor="#87CEFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </LinearLayout>
