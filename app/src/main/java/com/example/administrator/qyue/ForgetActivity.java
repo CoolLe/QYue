@@ -11,10 +11,18 @@ import android.widget.EditText;
 
 import com.example.administrator.qyue.Utils.ToastUtils;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ForgetActivity extends AppCompatActivity {
 
@@ -54,19 +62,45 @@ public class ForgetActivity extends AppCompatActivity {
             return;
         }
 
-        SharedPreferences preferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-        String phone = preferences.getString("phone", "");
-        Log.d("TAG", "phone: " + phone);
 
-        if (Objects.equals(phone, this.phone.getText().toString())) {
-            SharedPreferences.Editor edit = preferences.edit();
-            edit.putString("password", this.password.getText().toString());
-            Log.d("TAG", "passwprd: " + this.password.getText().toString());
-            edit.apply();
-            ToastUtils.toastShowe(this, "重置成功");
-            finish();
-        }
+        //初始化okhttp客户端
+        OkHttpClient client = new OkHttpClient.Builder().build();
+        //创建POST表单，获取username和password
+        RequestBody post = new FormBody.Builder()
+                .add("phongNum", phone.getText().toString())
+                .add("userPassword", password.getText().toString())
+                .build();
+        //开始请求，填入url和表单
+        Request request = new Request.Builder()
+                .url("http://47.101.176.1:8090/user/reset")
+                .post(post)
+                .build();
+        //Toast.makeText(this, "已经填入表单和url", Toast.LENGTH_SHORT).show();
+        Call call = client.newCall(request);
+        //客户端回调
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                //请求失败的处理
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                //请求成功的处理
+                final String responseData = response.body().string();
+                if (responseData == "ture") {
+                    ToastUtils.toastShowe(ForgetActivity.this, "重置成功!");
+                    finish();
+                } else {
+                    ToastUtils.toastShowe(ForgetActivity.this, "重置失败,该手机号不存在!");
+                    finish();
+                }
+            }
+
+        });
     }
+
 
     private boolean checkUserData() {
         if ("".equals(phone.getText().toString())) {
@@ -79,7 +113,7 @@ public class ForgetActivity extends AppCompatActivity {
             return false;
         }
 
-        if (password.getText().toString()!=repassword.getText().toString()){
+        if (password.getText().toString() != repassword.getText().toString()) {
             ToastUtils.toastShowe(this, "密码不一致");
             return false;
         }
