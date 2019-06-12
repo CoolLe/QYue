@@ -89,6 +89,5 @@ public class MajorActivity extends FragmentActivity implements AddressFragment.O
 
     }
 
-
     }
 
