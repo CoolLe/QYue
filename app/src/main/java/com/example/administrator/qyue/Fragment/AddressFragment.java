@@ -3,10 +3,13 @@ package com.example.administrator.qyue.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,22 @@ import com.example.administrator.qyue.Address.ContactAdapter;
 import com.example.administrator.qyue.Address.DividerItemDecoration;
 import com.example.administrator.qyue.Address.LetterView;
 import com.example.administrator.qyue.R;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import static com.netease.nimlib.sdk.media.player.AudioPlayer.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,10 +48,30 @@ public class AddressFragment extends Fragment {
 
     private RecyclerView contactList;
     private String[] contactNames;
+    private String[] contactPhoneNum;
     private LinearLayoutManager layoutManager;
     private LetterView letterView;
     private ContactAdapter adapter;
     private TextView address_invite;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            JSONArray jsonArray = (JSONArray) msg.obj;
+            contactPhoneNum = new String[jsonArray.length()];
+            contactNames = new String[jsonArray.length()];
+            try{
+                for (int i = 0;i<jsonArray.length();i++){
+                    contactPhoneNum[i] = jsonArray.getJSONObject(i).getString("friendPhoneNum");
+                    contactNames[i] = jsonArray.getJSONObject(i).getString("friendName");
+                }
+            }catch (JSONException e){
+                Log.d(TAG, "handleMessage: "+e.getMessage());
+            }
+
+            //这里添加创建通讯录界面的方法
+
+        }
+    };
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -126,7 +165,40 @@ public class AddressFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        contactNames = new String[] {"谈一乐", "温莎莎", "黄启洋", "老师", "大大"};
+        //初始化okhttp客户端
+        OkHttpClient client = new OkHttpClient.Builder().build();
+        //创建POST表单，获取username和password
+        RequestBody post = new FormBody.Builder()
+                .add("phoneNum","18878796793")
+                .build();
+        //开始请求，填入url和表单
+        Request request = new Request.Builder()
+                .url("http://47.101.176.1:8090/friend/findFriends")
+                .post(post)
+                .build();
+        //Toast.makeText(this, "已经填入表单和url", Toast.LENGTH_SHORT).show();
+        Call call = client.newCall(request);
+        //客户端回调
+        call.enqueue(new Callback(){
+
+             @Override
+             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                 final String responseData = response.body().string();
+                 try{
+                     JSONArray jsonArray = new JSONArray(responseData);
+                     Message msg = new Message();
+                     msg.obj = jsonArray;
+                     handler.sendMessage(msg);
+                 }catch (JSONException e){
+                     Log.d(TAG, "run: "+e.getMessage());
+                 }
+             }
+
+             @Override
+             public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+             }
+        });
         contactList =  getActivity().findViewById(R.id.contact_list);
         letterView = getActivity().findViewById(R.id.letter_view);
 
