@@ -89,14 +89,6 @@ public class MajorActivity extends FragmentActivity implements AddressFragment.O
 
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_add:
-                startActivity(new Intent(MajorActivity.this, AddFriendActivity.class));
-                break;
-            default:
-                break;
-        }
 
-    }}
+    }
 

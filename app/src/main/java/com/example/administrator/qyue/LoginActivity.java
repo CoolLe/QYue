@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,7 +29,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.phoneNum)
+    @BindView(R.id.phonenumber)
     EditText phoneNum;
     @BindView(R.id.password)
     EditText password;
@@ -68,8 +69,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException{
                 final String responseData = response.body().string();
-                if(responseData.equals(null)){
+                Log.d("TAG", "onResponse: ====================================" + responseData);
+                if(responseData.equals("no")){
+                    if (Looper.myLooper() == null) {
+                        Looper.prepare();
+                    }
                     Toast.makeText(LoginActivity.this, "用户名密码不一致", Toast.LENGTH_SHORT).show();
+                    Looper.loop();
                 }else {
                     startActivity(new Intent(LoginActivity.this,MajorActivity.class));
                     finish();
