@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.example.administrator.qyue.Address.LetterView
+    <com.example.administrator.qyue.LetterView
         android:id="@+id/letter_view"
         android:layout_width="30dp"
         android:layout_height="match_parent"
