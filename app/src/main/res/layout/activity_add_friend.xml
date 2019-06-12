@@ -67,7 +67,7 @@
             />
 
     </LinearLayout>
-    <!--
+
         <RelativeLayout
             android:id="@+id/rl_loading"
             android:layout_width="150dp"
@@ -95,5 +95,5 @@
 
     </RelativeLayout>
 
-  -->
+
 </FrameLayout>

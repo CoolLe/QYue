@@ -1,6 +1,8 @@
 package com.example.administrator.qyue.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +12,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.qyue.AddFriendActivity;
 import com.example.administrator.qyue.Address.ContactAdapter;
 import com.example.administrator.qyue.Address.DividerItemDecoration;
 import com.example.administrator.qyue.Address.LetterView;
+import com.example.administrator.qyue.MajorActivity;
 import com.example.administrator.qyue.R;
 
 /**
@@ -32,7 +37,7 @@ public class AddressFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private LetterView letterView;
     private ContactAdapter adapter;
-    private TextView address_invite;
+    private ImageView iv_add;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +87,21 @@ public class AddressFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_address, container, false);
+        //跳转到添加好友界面
+/*
+        iv_add=getActivity().findViewById(R.id.iv_add);
+
+        iv_add.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getActivity(),AddFriendActivity.class);
+                //你的fragment是基于fragmentactivity的，getactivity()就可以了
+
+
+                startActivity(intent);
+            }
+        });
+*/
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -126,9 +146,11 @@ public class AddressFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         contactNames = new String[] {"谈一乐", "温莎莎", "黄启洋", "老师", "大大"};
         contactList =  getActivity().findViewById(R.id.contact_list);
         letterView = getActivity().findViewById(R.id.letter_view);
+
 
         //address_invite=getActivity().findViewById(R.id.address_invite);
 
@@ -138,10 +160,21 @@ public class AddressFragment extends Fragment {
         contactList.setLayoutManager(layoutManager);
         contactList.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         contactList.setAdapter(adapter);
+        //跳转到添加好友界面
+        iv_add=getActivity().findViewById(R.id.iv_add);
+        iv_add.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getActivity(),AddFriendActivity.class);
+                //你的fragment是基于fragmentactivity的，getactivity()就可以了
 
+                startActivity(intent);
+            }
+        });
 
         //实现字母排序好友列表
         letterView.setCharacterListener(new LetterView.CharacterClickListener() {
+
 
             @Override
             public void clickCharacter(String character) {
@@ -153,6 +186,11 @@ public class AddressFragment extends Fragment {
                 layoutManager.scrollToPositionWithOffset(0, 0);
             }
         });
+    }
+    public void onClick(View v) {
+
+        Intent intent = new Intent(getActivity(),AddFriendActivity.class);
+
     }
     }
 
