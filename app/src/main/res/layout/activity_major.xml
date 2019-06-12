@@ -24,15 +24,6 @@
             android:layout_height="2px"
             android:layout_alignParentBottom="true"
             android:background="#FFFFFF" />
-        <ImageView
-            android:id="@+id/iv_add"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="370dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/add"
-             />
-
 
     </RelativeLayout>
 
@@ -84,7 +75,6 @@
             android:drawableTop="@drawable/tab_menu_my"
             android:text="我的"
             />
-
 
     </RadioGroup>
 </LinearLayout>
