@@ -1,6 +1,7 @@
 package com.example.administrator.qyue.Fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,7 +54,8 @@ public class AddressFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private LetterView letterView;
     private ContactAdapter adapter;
-    private TextView address_invite;
+    private String CurrentUser;
+
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -166,11 +168,14 @@ public class AddressFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        SharedPreferences login = getActivity().getSharedPreferences("loginInformation", Context.MODE_PRIVATE);
+        CurrentUser = login.getString("loginPhone","0");
         //初始化okhttp客户端
         OkHttpClient client = new OkHttpClient.Builder().build();
         //创建POST表单，获取username和password
         RequestBody post = new FormBody.Builder()
-                .add("phoneNum","18878796793")
+                .add("phoneNum",CurrentUser)
                 .build();
         //开始请求，填入url和表单
         Request request = new Request.Builder()

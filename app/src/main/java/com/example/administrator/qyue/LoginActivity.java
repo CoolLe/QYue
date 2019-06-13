@@ -1,7 +1,9 @@
 package com.example.administrator.qyue;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.password)
     EditText password;
 
+    private String loginPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "用户名密码不一致", Toast.LENGTH_SHORT).show();
                     Looper.loop();
                 }else {
+                    SharedPreferences preferences = getSharedPreferences("loginInformation", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edit = preferences.edit();
+                    edit.putString("loginPhone",phoneNum.getText().toString());
+                    edit.apply();
                     startActivity(new Intent(LoginActivity.this,MajorActivity.class));
                     finish();
                 }
