@@ -39,10 +39,6 @@ public class MessageActivity extends AppCompatActivity {
     private  MsgAdapter adapter;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +59,8 @@ public class MessageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
                 String content=inputText.getText().toString();
                 Intent intent = getIntent();
-                Log.d("TAG", "onResponse: ====================================" + intent.getStringExtra("friendPhone"));
                 if (!"".equals(content)) {
                     sendMsg(intent.getStringExtra("friendPhone"),content);
                 }
@@ -102,16 +96,13 @@ public class MessageActivity extends AppCompatActivity {
         };
 
     private void sendMsg (String sendAccount,String sendContent){
-        // 该帐号为示例，请先注册
+
         String account = sendAccount;
-        // 以单聊类型为例
         SessionTypeEnum sessionType = SessionTypeEnum.P2P;
         String content = sendContent;
 
-        // 创建一个文本消息
         IMMessage textMessage = MessageBuilder.createTextMessage(account, sessionType, content);
 
-        // 发送给对方
         NIMClient.getService(MsgService.class).sendMessage(textMessage, false).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
