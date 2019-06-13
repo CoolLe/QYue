@@ -1,5 +1,6 @@
 package com.example.administrator.qyue.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,20 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.administrator.qyue.AddFriendActivity;
 import com.example.administrator.qyue.Address.ContactAdapter;
 import com.example.administrator.qyue.Address.DividerItemDecoration;
 import com.example.administrator.qyue.Address.LetterView;
 import com.example.administrator.qyue.R;
-
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.IOException;
-import java.security.PrivateKey;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -38,7 +34,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
 import static com.netease.nimlib.sdk.media.player.AudioPlayer.TAG;
 
 /**
@@ -60,6 +55,7 @@ public class AddressFragment extends Fragment {
     private String CurrentUser;
     private ImageView iv_add;
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -70,6 +66,12 @@ public class AddressFragment extends Fragment {
                 for (int i = 0;i<jsonArray.length();i++){
                     contactPhoneNum[i] = jsonArray.getJSONObject(i).getString("friendPhoneNum");
                     contactNames[i] = jsonArray.getJSONObject(i).getString("friendName");
+
+                    SharedPreferences preferences = getActivity().getSharedPreferences("loginInformation", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edit = preferences.edit();
+                    edit.putString(jsonArray.getJSONObject(i).getString("friendName"),jsonArray.getJSONObject(i).getString("friendPhoneNum"));
+                    edit.apply();
+
                 }
             }catch (JSONException e){
                 Log.d(TAG, "handleMessage: "+e.getMessage());

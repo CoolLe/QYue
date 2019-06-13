@@ -2,6 +2,7 @@ package com.example.administrator.qyue.Address;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -133,7 +136,13 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(view);
             mTextView = view.findViewById(R.id.contact_name);
             view.setOnClickListener(v -> {
+
+                SharedPreferences friendPhone =mContext.getSharedPreferences("LoginInformation",MODE_PRIVATE);
+
                 Intent intent = new Intent(mContext, MessageActivity.class);
+
+                intent.putExtra("friendPhone",friendPhone.getString("friendName","0"));
+
                 mContext.startActivity(intent);
             });
         }
