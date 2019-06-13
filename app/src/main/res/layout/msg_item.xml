@@ -10,11 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:background="@drawable/message_left">
+        android:background="#00EE76">
         <TextView
             android:id="@+id/left_msg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textSize="18dp"
@@ -23,9 +23,9 @@
     <LinearLayout
         android:id="@+id/right_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_gravity="right"
-        android:background="@drawable/message_right"
+        android:background="#BEBEBE"
         >
         <TextView
             android:id="@+id/right_msg"

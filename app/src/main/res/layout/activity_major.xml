@@ -6,26 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/tab_title"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#2776ce">
-        <TextView
-            android:id="@+id/txt_top"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="启悦"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:layout_alignParentBottom="true"
-            android:background="#FFFFFF" />
 
-    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fl_main"
