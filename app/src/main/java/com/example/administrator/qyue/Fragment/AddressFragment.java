@@ -25,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.security.PrivateKey;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -69,7 +70,7 @@ public class AddressFragment extends Fragment {
             }
 
             //这里添加创建通讯录界面的方法
-
+            showAddress();
         }
     };
 
@@ -186,6 +187,7 @@ public class AddressFragment extends Fragment {
                  final String responseData = response.body().string();
                  try{
                      JSONArray jsonArray = new JSONArray(responseData);
+                     //Log.d(TAG, "onResponse: ===================================" + jsonArray);
                      Message msg = new Message();
                      msg.obj = jsonArray;
                      handler.sendMessage(msg);
@@ -199,6 +201,9 @@ public class AddressFragment extends Fragment {
 
              }
         });
+    }
+
+    private void showAddress(){
         contactList =  getActivity().findViewById(R.id.contact_list);
         letterView = getActivity().findViewById(R.id.letter_view);
 
@@ -226,5 +231,5 @@ public class AddressFragment extends Fragment {
             }
         });
     }
-    }
+}
 
