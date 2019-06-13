@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrator.qyue.Utils.ToastUtils;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.RequestCallback;
+import com.netease.nimlib.sdk.auth.AuthService;
+import com.netease.nimlib.sdk.auth.LoginInfo;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -82,13 +86,43 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor edit = preferences.edit();
                     edit.putString("loginPhone",phoneNum.getText().toString());
                     edit.apply();
-                    startActivity(new Intent(LoginActivity.this,MajorActivity.class));
-                    finish();
+                    IMlogin();
                 }
             }
         });
 
     }
+
+    //网易云信登入
+    public void IMlogin(){
+        LoginInfo info = new LoginInfo(phoneNum.getText().toString(),password.getText().toString()); // config...
+        RequestCallback<LoginInfo> callback =
+                new RequestCallback<LoginInfo>() {
+                    @Override
+                    public void onSuccess(LoginInfo param) {
+                        startActivity(new Intent(LoginActivity.this,MajorActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailed(int code) {
+                        if (Looper.myLooper() == null) {
+                            Looper.prepare();
+                        }
+                        Toast.makeText(LoginActivity.this, "网易云信登入失败", Toast.LENGTH_SHORT).show();
+                        Looper.loop();
+                    }
+
+                    @Override
+                    public void onException(Throwable exception) {
+
+                    }
+                    // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
+                };
+        NIMClient.getService(AuthService.class).login(info)
+                .setCallback(callback);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
