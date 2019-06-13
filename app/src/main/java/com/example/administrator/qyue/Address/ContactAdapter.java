@@ -48,6 +48,7 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
+
     private void handleContact() {
 
         mContactList = new ArrayList<>();
@@ -112,6 +113,7 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
+
     @Override
     public int getItemCount() {
         return resultList == null ? 0 : resultList.size();
@@ -119,7 +121,6 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class CharacterHolder extends RecyclerView.ViewHolder {
         TextView mTextView;
-
         CharacterHolder(View view) {
             super(view);
             mTextView = (TextView) view.findViewById(R.id.character);
@@ -128,21 +129,14 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class ContactHolder extends RecyclerView.ViewHolder {
         TextView mTextView;
-
         ContactHolder(View view) {
             super(view);
             mTextView = (TextView) view.findViewById(R.id.contact_name);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mContext, MessageActivity.class);
-                    mContext.startActivity(intent);
-                }
-            });
 
         }
 
     }
+
 
 
     public int getScrollPosition(String character) {

@@ -1,6 +1,7 @@
 package com.example.administrator.qyue.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.qyue.AddFriendActivity;
 import com.example.administrator.qyue.Address.ContactAdapter;
 import com.example.administrator.qyue.Address.DividerItemDecoration;
 import com.example.administrator.qyue.Address.LetterView;
@@ -26,7 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.security.PrivateKey;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -56,6 +58,7 @@ public class AddressFragment extends Fragment {
     private ContactAdapter adapter;
     private String CurrentUser;
 
+    private ImageView iv_add;
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -124,7 +127,48 @@ public class AddressFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_address, container, false);
+
+        //初始化控件
+       /* initView();
+        initListener();*/
+/*
+        ImageView imageView=getActivity().
+
+
+        iv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), AddFriendActivity.class);
+                startActivity(intent);
+
+            }
+        });*/
     }
+
+    private void initView() {
+       iv_add=getActivity().findViewById(R.id.iv_add);
+    }
+
+    /*
+    private void initView() {
+
+        iv_add = getActivity().findViewById(R.id.iv_add);
+    }*/
+    private void initListener() {
+
+       iv_add.setOnClickListener(new ImageView.OnClickListener(){
+           @Override
+           public void onClick(View v) {
+               Intent intent=new Intent(getActivity(), AddFriendActivity.class);
+               startActivity(intent);
+
+           }
+
+        });
+
+    }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
