@@ -26,7 +26,7 @@ public class MessageActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_message);
 
-        initMsgs();//初始化消息数据
+
         inputText=(EditText) findViewById(R.id.inputFrame);
         send=(Button) findViewById(R.id.send);
         msgRecyclerView=(RecyclerView)findViewById(R.id.msg_recycler_view);
@@ -49,14 +49,6 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-    private void initMsgs(){
-        Msg msg1=new Msg("您好，请问有什么需要帮助的？",Msg.TYPE_RECEIVED);
-        msgList.add(msg1);
-        Msg msg2=new Msg("我想查询自己的成绩",Msg.TYPE_SEND);
-        msgList.add(msg2);
-        Msg msg3=new Msg("好的，请稍等",Msg.TYPE_RECEIVED);
-        msgList.add(msg3);
     }
 
 }

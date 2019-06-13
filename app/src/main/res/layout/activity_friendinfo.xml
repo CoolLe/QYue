@@ -64,7 +64,7 @@
         android:background="@drawable/roundmyfragment">
 
         <TextView
-            android:id="@+id/usrname"
+            android:id="@+id/usrnametv"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:gravity="center_vertical|left"
@@ -76,8 +76,8 @@
             android:id="@+id/friendName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_alignEnd="@+id/usrname"
-            android:layout_alignRight="@+id/usrname"
+            android:layout_alignEnd="@+id/usrnametv"
+            android:layout_alignRight="@+id/usrnametv"
             android:layout_marginEnd="-310dp"
             android:layout_marginRight="-310dp"
             android:gravity="center_vertical|right"
