@@ -73,7 +73,6 @@ public class MajorActivity extends FragmentActivity implements AddressFragment.O
 
     private void initView() {
         rg_major=(RadioGroup) findViewById(R.id.rg_major);
-
     }
 
     private void initData() {

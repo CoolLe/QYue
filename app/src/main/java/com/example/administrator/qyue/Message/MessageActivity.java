@@ -106,7 +106,7 @@ public class MessageActivity extends AppCompatActivity {
         NIMClient.getService(MsgService.class).sendMessage(textMessage, false).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
-                Msg msg = new Msg(content, Msg.TYPE_RECEIVED);
+                Msg msg = new Msg(content, Msg.TYPE_SEND);
                 msgList.add(msg);
                 // 当有新消息时，刷新ListView中的显示
                 adapter.notifyItemInserted(msgList.size()-1);
