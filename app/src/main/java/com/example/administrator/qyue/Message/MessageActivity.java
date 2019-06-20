@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.qyue.R;
@@ -38,7 +39,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private  MsgAdapter adapter;
 
-
+    private TextView friendName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,9 @@ public class MessageActivity extends AppCompatActivity {
         NIMClient.getService(MsgServiceObserve.class)
                 .observeReceiveMessage(incomingMessageObserver, true);
 
+        friendName=(TextView) findViewById(R.id.friend_name);
+        Intent intent = getIntent();
+        friendName.setText(intent.getStringExtra("friendName"));
         inputText=(EditText) findViewById(R.id.inputFrame);
         send=(Button) findViewById(R.id.send);
         msgRecyclerView=(RecyclerView)findViewById(R.id.msg_recycler_view);

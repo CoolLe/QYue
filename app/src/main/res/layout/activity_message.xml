@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="黄启扬"
+            android:text=""
             android:textColor="#ffffff"
             android:textSize="20sp" />
         <View

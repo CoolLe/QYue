@@ -185,6 +185,7 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 Log.d("TAG", "MessageActivity: ====================================" + responseData);
                 Intent intent = new Intent(mContext, MessageActivity.class);
                 intent.putExtra("friendPhone",responseData);
+                intent.putExtra("friendName",name);
                 mContext.startActivity(intent);
             }
         });
